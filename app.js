@@ -1,18 +1,16 @@
-const http = require('http'); // pobiera bibliotekę
+const cors = require('cors')
+const express = require('express')
+const bodyParser = require('body-parser')
 
-const hostname = '127.0.0.1';
-const port = 5000;
+const app = express()
 
-const server = http.createServer((request, response) => { // utworzenie serwer i zdefiniowanie co on ma robić
-  if(request.method == "POST" && request.url.toLocaleLowerCase() == "/api/addparticipant"){
-    console.log(request.url);
-    response.statusCode = 200;
-    response.setHeader('Content-Type', 'text/plain');
-    response.end('Hello World\n');
-  }
-  response.statusCode = 404;
-  response.end();
+app.use(cors())
+app.use(bodyParser.json())
+
+app.post('/api/addparticipant', (request, response) => {
+  console.log(request.body);
+  response.statusCode = 200;
+  response.send();
 });
 
-server.listen(port, hostname) // uruchamia serwer
-console.log(`Server running at http://${hostname}:${port}/`); // komunikat o uruchomieniu serwera
+app.listen(5000, () => console.log('Example app listening on port 5000!'))

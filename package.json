@@ -1,0 +1,14 @@
+{
+  "name": "brain-app-node",
+  "version": "1.0.0",
+  "private": true,
+  "main": "app.js",
+  "dependencies": {
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "body-parser": "^1.18.3"
+  },
+  "scripts": {
+    "start": "node app.js"
+  }
+}
